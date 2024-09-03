@@ -4,15 +4,12 @@ import { useState, useCallback} from "react";
 
 export const useHttp = () => {
 
-	//! Тут створюю FINITE STATE MACHINE
 	const [process, setProcess] = useState('waiting');
 
 
 	const request = useCallback (async (url, method = 'GET', body = null, headers = {'Content-Type': 'application/json'}) => {
 
-		//! Тут створюю FINITE STATE MACHINE
 		setProcess('loading');
-
 
 		try {
 			const response = await fetch(url, {method, body, headers});
@@ -25,7 +22,6 @@ export const useHttp = () => {
 			return data;
 			
 		} catch(e) {
-			//! Тут створюю FINITE STATE MACHINE
 			setProcess('error');
 
 			throw e;
@@ -35,7 +31,7 @@ export const useHttp = () => {
 
 
 	const clearError = useCallback(() => {
-		//! Тут створюю FINITE STATE MACHINE
+	
 		setProcess('loading');
 	}, []);
 
